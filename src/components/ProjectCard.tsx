@@ -17,6 +17,7 @@ export function ProjectCard({ project, index }: ProjectCardProps) {
           alt={project.imageAlt}
           width={1440}
           height={900}
+          quality={90}
           sizes="(max-width: 1023px) 100vw, 58vw"
           className="project-image"
         />

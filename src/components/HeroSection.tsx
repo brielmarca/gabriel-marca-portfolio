@@ -22,11 +22,12 @@ export function HeroSection() {
         <div className="portrait-frame">
           <div className="portrait-glow" aria-hidden="true" />
           <Image
-            src="/images/gabriel-portrait.png"
+            src="/images/gabriel/portrait.webp"
             alt="Gabriel Marca, Full-Stack Developer"
             width={576}
             height={1024}
             priority
+            quality={90}
             sizes="(max-width: 767px) 84vw, (max-width: 1023px) 48vw, 38vw"
             className="portrait-image"
           />
