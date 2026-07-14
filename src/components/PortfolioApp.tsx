@@ -3,90 +3,16 @@
 import Image from "next/image";
 import { useEffect, useRef, useState } from "react";
 import type { IconType } from "react-icons";
-import {
-  FaCss3Alt,
-  FaDocker,
-  FaGitAlt,
-  FaGithub,
-  FaHtml5,
-  FaJava,
-  FaJs,
-  FaLinkedinIn,
-  FaLinux,
-  FaNodeJs,
-  FaPython,
-  FaReact,
-  FaServer,
-  FaWhatsapp,
-} from "react-icons/fa";
-import {
-  MdAdminPanelSettings,
-  MdBuild,
-  MdCode,
-  MdDarkMode,
-  MdDataObject,
-  MdDevices,
-  MdDns,
-  MdGroups,
-  MdHttps,
-  MdHub,
-  MdLanguage,
-  MdLightMode,
-  MdOutlinePolicy,
-  MdOutlineSpeed,
-  MdPassword,
-  MdPhonelinkLock,
-  MdRocketLaunch,
-  MdSecurity,
-  MdStorage,
-  MdTerminal,
-  MdVpnKey,
-  MdWeb,
-} from "react-icons/md";
-import {
-  SiC,
-  SiCloudflare,
-  SiExpress,
-  SiGmail,
-  SiIntellijidea,
-  SiMariadb,
-  SiMongodb,
-  SiMysql,
-  SiNginx,
-  SiPhp,
-  SiPostgresql,
-  SiPostman,
-  SiPrisma,
-  SiRedis,
-  SiSpringboot,
-  SiSqlite,
-  SiSupabase,
-  SiTailwindcss,
-  SiTypescript,
-  SiVite,
-} from "react-icons/si";
-import { TbApi, TbBinaryTree, TbBrandCSharp } from "react-icons/tb";
-import { VscVscode } from "react-icons/vsc";
+import { FaGithub, FaLinkedinIn, FaWhatsapp } from "react-icons/fa";
+import { MdDarkMode, MdLanguage, MdLightMode } from "react-icons/md";
+import { SiGmail } from "react-icons/si";
+import { SkillGlyph } from "@/components/SkillGlyph";
+import { skillCategories } from "@/data/skills";
 
 const emailAddress = "brielmarcacontact@gmail.com";
 
 type Language = "en" | "pt";
 type Theme = "dark" | "light";
-type LocalizedText = { en: string; pt: string };
-
-type SkillItem = {
-  label: LocalizedText;
-  icon: IconType;
-  color: string;
-};
-
-type SkillCategory = {
-  code: string;
-  name: LocalizedText;
-  icon: IconType;
-  items: readonly SkillItem[];
-  wide?: boolean;
-};
 
 const navigationLinks = [
   { href: "#home", label: { en: "Home", pt: "Início" } },
@@ -95,111 +21,6 @@ const navigationLinks = [
   { href: "#projects", label: { en: "Projects", pt: "Projetos" } },
   { href: "#contact", label: { en: "Contact", pt: "Contato" } },
 ] as const;
-
-const skillCategories: readonly SkillCategory[] = [
-  {
-    code: "01",
-    name: { en: "Backend", pt: "Backend" },
-    icon: MdDns,
-    items: [
-      { label: { en: "Spring Boot", pt: "Spring Boot" }, icon: SiSpringboot, color: "#6DB33F" },
-      { label: { en: "Node.js", pt: "Node.js" }, icon: FaNodeJs, color: "#5FA04E" },
-      { label: { en: "Express", pt: "Express" }, icon: SiExpress, color: "#9AA4B2" },
-      { label: { en: "REST APIs", pt: "REST APIs" }, icon: TbApi, color: "#74C7F8" },
-      { label: { en: "Business Logic", pt: "Lógica de Negócio" }, icon: TbBinaryTree, color: "#BB86FC" },
-      { label: { en: "Production Services", pt: "Serviços em Produção" }, icon: FaServer, color: "#7AA2F7" },
-    ],
-  },
-  {
-    code: "02",
-    name: { en: "Frontend", pt: "Frontend" },
-    icon: MdWeb,
-    items: [
-      { label: { en: "React", pt: "React" }, icon: FaReact, color: "#61DAFB" },
-      { label: { en: "HTML5", pt: "HTML5" }, icon: FaHtml5, color: "#E34F26" },
-      { label: { en: "CSS3", pt: "CSS3" }, icon: FaCss3Alt, color: "#1572B6" },
-      { label: { en: "Tailwind CSS", pt: "Tailwind CSS" }, icon: SiTailwindcss, color: "#06B6D4" },
-      { label: { en: "Vite", pt: "Vite" }, icon: SiVite, color: "#A855F7" },
-      { label: { en: "Responsive Design", pt: "Design Responsivo" }, icon: MdDevices, color: "#74C7F8" },
-    ],
-  },
-  {
-    code: "03",
-    name: { en: "Databases", pt: "Bancos de Dados" },
-    icon: MdStorage,
-    items: [
-      { label: { en: "PostgreSQL", pt: "PostgreSQL" }, icon: SiPostgresql, color: "#4169E1" },
-      { label: { en: "MySQL", pt: "MySQL" }, icon: SiMysql, color: "#4479A1" },
-      { label: { en: "MariaDB", pt: "MariaDB" }, icon: SiMariadb, color: "#C0765A" },
-      { label: { en: "MongoDB", pt: "MongoDB" }, icon: SiMongodb, color: "#47A248" },
-      { label: { en: "Redis", pt: "Redis" }, icon: SiRedis, color: "#DC382D" },
-      { label: { en: "Supabase", pt: "Supabase" }, icon: SiSupabase, color: "#3FCF8E" },
-      { label: { en: "SQLite", pt: "SQLite" }, icon: SiSqlite, color: "#5DADE2" },
-      { label: { en: "Prisma", pt: "Prisma" }, icon: SiPrisma, color: "#7C8AA5" },
-    ],
-  },
-  {
-    code: "04",
-    name: { en: "Infrastructure", pt: "Infraestrutura" },
-    icon: MdHub,
-    items: [
-      { label: { en: "Docker", pt: "Docker" }, icon: FaDocker, color: "#2496ED" },
-      { label: { en: "Docker Compose", pt: "Docker Compose" }, icon: FaDocker, color: "#2496ED" },
-      { label: { en: "Linux", pt: "Linux" }, icon: FaLinux, color: "#F4C430" },
-      { label: { en: "VPS", pt: "VPS" }, icon: FaServer, color: "#74C7F8" },
-      { label: { en: "Nginx", pt: "Nginx" }, icon: SiNginx, color: "#009639" },
-      { label: { en: "Cloudflare", pt: "Cloudflare" }, icon: SiCloudflare, color: "#F38020" },
-      { label: { en: "Cloudflare Pages", pt: "Cloudflare Pages" }, icon: SiCloudflare, color: "#F38020" },
-      { label: { en: "Production Deployment", pt: "Deploy em Produção" }, icon: MdRocketLaunch, color: "#BB86FC" },
-    ],
-  },
-  {
-    code: "05",
-    name: { en: "Security", pt: "Segurança" },
-    icon: MdSecurity,
-    items: [
-      { label: { en: "JWT Authentication", pt: "Autenticação JWT" }, icon: MdVpnKey, color: "#BB86FC" },
-      { label: { en: "Spring Security", pt: "Spring Security" }, icon: MdSecurity, color: "#6DB33F" },
-      { label: { en: "Role-Based Access", pt: "Acesso por Função" }, icon: MdAdminPanelSettings, color: "#74C7F8" },
-      { label: { en: "Access Control", pt: "Controle de Acesso" }, icon: MdGroups, color: "#74C7F8" },
-      { label: { en: "MFA / TOTP", pt: "MFA / TOTP" }, icon: MdPhonelinkLock, color: "#BB86FC" },
-      { label: { en: "Rate Limiting", pt: "Rate Limiting" }, icon: MdOutlineSpeed, color: "#F59E0B" },
-      { label: { en: "CORS", pt: "CORS" }, icon: MdOutlinePolicy, color: "#F59E0B" },
-      { label: { en: "HTTPS / TLS", pt: "HTTPS / TLS" }, icon: MdHttps, color: "#22C55E" },
-      { label: { en: "Secure Credentials", pt: "Credenciais Seguras" }, icon: MdPassword, color: "#BB86FC" },
-      { label: { en: "Environment Variables", pt: "Variáveis de Ambiente" }, icon: MdDataObject, color: "#74C7F8" },
-    ],
-  },
-  {
-    code: "06",
-    name: { en: "Languages", pt: "Linguagens" },
-    icon: MdCode,
-    items: [
-      { label: { en: "Java", pt: "Java" }, icon: FaJava, color: "#F89820" },
-      { label: { en: "Python", pt: "Python" }, icon: FaPython, color: "#3776AB" },
-      { label: { en: "PHP", pt: "PHP" }, icon: SiPhp, color: "#777BB4" },
-      { label: { en: "JavaScript", pt: "JavaScript" }, icon: FaJs, color: "#F7DF1E" },
-      { label: { en: "TypeScript", pt: "TypeScript" }, icon: SiTypescript, color: "#3178C6" },
-      { label: { en: "C", pt: "C" }, icon: SiC, color: "#A8B9CC" },
-      { label: { en: "C++", pt: "C++" }, icon: MdCode, color: "#00599C" },
-      { label: { en: "C#", pt: "C#" }, icon: TbBrandCSharp, color: "#9B4F96" },
-    ],
-  },
-  {
-    code: "07",
-    name: { en: "Tools", pt: "Ferramentas" },
-    icon: MdBuild,
-    wide: true,
-    items: [
-      { label: { en: "Git", pt: "Git" }, icon: FaGitAlt, color: "#F05032" },
-      { label: { en: "GitHub", pt: "GitHub" }, icon: FaGithub, color: "#AEBBD0" },
-      { label: { en: "IntelliJ IDEA", pt: "IntelliJ IDEA" }, icon: SiIntellijidea, color: "#FE315D" },
-      { label: { en: "Visual Studio Code", pt: "Visual Studio Code" }, icon: VscVscode, color: "#007ACC" },
-      { label: { en: "Postman", pt: "Postman" }, icon: SiPostman, color: "#FF6C37" },
-      { label: { en: "OpenCode", pt: "OpenCode" }, icon: MdTerminal, color: "#74C7F8" },
-    ],
-  },
-];
 
 const copy = {
   en: {
@@ -642,20 +463,18 @@ export function PortfolioApp() {
           </div>
           <div className="skills-grid enhanced-skills-grid">
             {skillCategories.map((category) => {
-              const CategoryIcon = category.icon;
               return (
-                <article className={`skill-card enhanced-skill-card ${category.wide ? "is-wide" : ""}`} key={category.code}>
+                <article className="skill-card enhanced-skill-card" key={category.code}>
                   <div className="skill-card-header">
-                    <span className="skill-icon" aria-hidden="true"><CategoryIcon /></span>
+                    <span className="skill-icon" aria-hidden="true"><SkillGlyph icon={category.icon} /></span>
                     <h3>{category.name[language]}</h3>
                     <span className="skill-index" aria-hidden="true">{category.code}</span>
                   </div>
                   <ul>
                     {category.items.map((item) => {
-                      const ItemIcon = item.icon;
                       return (
                         <li key={item.label.en}>
-                          <span className="skill-item-icon" aria-hidden="true" style={{ color: item.color }}><ItemIcon /></span>
+                          <span className="skill-item-icon" aria-hidden="true" style={{ color: item.color }}><SkillGlyph icon={item.icon} /></span>
                           <span>{item.label[language]}</span>
                         </li>
                       );
