@@ -2,6 +2,12 @@
 
 Personal portfolio of Gabriel Marca, a Full-Stack Developer building secure and production-ready systems.
 
+## Live Site
+
+https://brielmarca-portfolio.pages.dev
+
+Pushes to `main` automatically trigger production deployments on Cloudflare Pages.
+
 ## Status
 
 The portfolio is under active development. The current version provides the core single-page experience and is being refined for production use.
@@ -71,4 +77,4 @@ src/data/          Structured navigation, project, skill, and contact data
 src/types/         Shared TypeScript types
 ```
 
-This repository does not currently include a deployment configuration or license.
+This repository does not currently include a license.
