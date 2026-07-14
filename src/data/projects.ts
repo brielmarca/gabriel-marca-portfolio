@@ -1,6 +1,6 @@
 import type { Project } from "@/types/portfolio";
 
-export const projects = [
+export const projects: readonly Project[] = [
   {
     id: "fourFight",
     name: "4Four Fight Academy",
@@ -21,4 +21,4 @@ export const projects = [
     imageWidth: 1859,
     imageHeight: 971,
   },
-] as const satisfies readonly Project[];
+];

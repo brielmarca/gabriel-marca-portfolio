@@ -84,6 +84,17 @@ export interface Project {
   image: string;
   imageWidth: number;
   imageHeight: number;
+  testimonial?: Readonly<Partial<Record<Locale, ProjectTestimonial>>>;
+}
+
+export interface ProjectTestimonial {
+  quote: string;
+  author: string;
+  role: string;
+  avatar?: {
+    src: string;
+    alt: string;
+  };
 }
 
 export interface SocialLink {

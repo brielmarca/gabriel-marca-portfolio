@@ -3,12 +3,13 @@
 import Image from "next/image";
 import { useEffect, useRef, useState, useSyncExternalStore } from "react";
 import type { IconType } from "react-icons";
-import { FaGithub, FaLinkedinIn, FaWhatsapp } from "react-icons/fa";
+import { FaLinkedin } from "react-icons/fa6";
 import { MdDarkMode, MdLightMode } from "react-icons/md";
-import { SiGmail } from "react-icons/si";
+import { SiGithub, SiGmail, SiWhatsapp } from "react-icons/si";
 import { LanguageSelector } from "@/components/LanguageSelector";
+import { ProjectTestimonial } from "@/components/ProjectTestimonial";
 import { SkillGlyph } from "@/components/SkillGlyph";
-import { emailAddress, socialLinks } from "@/data/contact";
+import { emailAddress, socialLinks, whatsappUrl } from "@/data/contact";
 import { navigationLinks } from "@/data/navigation";
 import { projects } from "@/data/projects";
 import { skillCategories } from "@/data/skills";
@@ -305,6 +306,7 @@ export function PortfolioApp() {
                       {project.statuses.map((status) => <li key={status}>{text.projectsSection.statuses[status]}</li>)}
                     </ul>
                     <p className="project-description">{projectText.description}</p>
+                    <ProjectTestimonial testimonial={project.testimonial?.[locale]} />
                     <ul className="technology-list" aria-label={text.accessibility.technologiesUsed}>
                       {project.technologies.map((technology) => (
                         <li key={technology}>{technology === "Responsive Design" ? text.projectsSection.technologyLabels[technology] : technology}</li>
@@ -326,10 +328,10 @@ export function PortfolioApp() {
             <h2 id="contact-title">{text.contact.titleStart} <em>{text.contact.titleEmphasis}</em></h2>
             <p>{text.contact.description}</p>
             <div className="contact-links">
-              <ContactAction label={text.contact.email} detail={text.contact.conversation} accessibleLabel={format(text.accessibility.contactAction, "method", text.contact.email)} href={`mailto:${emailAddress}`} icon={SiGmail} color="#EA4335" platform="email" primary />
-              <ContactAction label={text.contact.whatsapp} detail={text.contact.availableSoon} accessibleLabel={format(text.accessibility.contactAction, "method", text.contact.whatsapp)} icon={FaWhatsapp} color="#25D366" platform="whatsapp" />
-              <ContactAction label={text.contact.linkedin} detail={text.contact.professional} accessibleLabel={externalContactLabel(text.contact.linkedin)} href={socialLinks.find((link) => link.label === "LinkedIn")?.href} icon={FaLinkedinIn} color="#0A66C2" platform="linkedin" />
-              <ContactAction label={text.contact.github} detail={text.contact.work} accessibleLabel={externalContactLabel(text.contact.github)} href={socialLinks.find((link) => link.label === "GitHub")?.href} icon={FaGithub} color="#AEBBD0" platform="github" />
+              <ContactAction label={text.contact.email} detail={text.contact.emailAction} accessibleLabel={format(text.accessibility.contactAction, "method", text.contact.email)} href={`mailto:${emailAddress}`} icon={SiGmail} color="#EA4335" platform="email" primary />
+              <ContactAction label={text.contact.whatsapp} detail={whatsappUrl ? text.contact.whatsappAction : text.contact.availableSoon} accessibleLabel={whatsappUrl ? externalContactLabel(text.contact.whatsapp) : format(text.accessibility.contactAction, "method", text.contact.whatsapp)} href={whatsappUrl} icon={SiWhatsapp} color="#25B95A" platform="whatsapp" />
+              <ContactAction label={text.contact.linkedin} detail={text.contact.linkedinAction} accessibleLabel={externalContactLabel(text.contact.linkedin)} href={socialLinks.find((link) => link.label === "LinkedIn")?.href} icon={FaLinkedin} color="#0A66C2" platform="linkedin" />
+              <ContactAction label={text.contact.github} detail={text.contact.githubAction} accessibleLabel={externalContactLabel(text.contact.github)} href={socialLinks.find((link) => link.label === "GitHub")?.href} icon={SiGithub} color="var(--monochrome-icon)" platform="github" />
             </div>
           </div>
         </section>
