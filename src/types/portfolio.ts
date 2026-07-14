@@ -1,5 +1,16 @@
 export type Locale = "en" | "pt" | "es";
 
+export type EducationItemId = "programming" | "highSchool" | "universityGoal";
+export type EducationIconId = "code" | "school" | "university";
+
+export interface EducationItem {
+  id: EducationItemId;
+  icon: EducationIconId;
+  institution?: string;
+  location?: string;
+  status?: "planned";
+}
+
 export interface NavigationLink {
   id: "home" | "about" | "skills" | "projects" | "contact";
   href: `#${string}`;

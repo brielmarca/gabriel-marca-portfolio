@@ -50,6 +50,7 @@ const english = {
   },
   annotations: {
     about: "MODULE :: ABOUT",
+    education: "// education & direction",
     skills: "MODULE :: CAPABILITIES",
     projects: "MODULE :: PROJECTS",
     contact: "CHANNEL :: CONTACT",
@@ -72,6 +73,29 @@ const english = {
       "Today, I work on paid projects for businesses, handling everything from frontend and backend development to databases, deployment and infrastructure. Security is part of that work from the beginning, with authentication, permissions, protected data, HTTPS/TLS and careful credential handling built into the process.",
       "I also mentor six students, helping them understand how software is really built instead of just copying code. I’m still learning every day, but now I’m doing it while creating systems that people and companies actually use.",
     ],
+  },
+  education: {
+    title: "Education & Next Step",
+    ageLocation: "{age} years old · {country}",
+    countries: { brazil: "Brazil" },
+    statuses: { planned: "Planned" },
+    items: {
+      programming: {
+        label: "Programming Studies",
+        title: "Professional Programming Studies",
+        description: "Studied programming during secondary education in Portugal.",
+      },
+      highSchool: {
+        label: "High School",
+        title: "Secondary Education",
+        description: "Completed in Brazil through EJA/ENCCEJA.",
+      },
+      universityGoal: {
+        label: "University Goal",
+        title: "Informatics Engineering",
+        description: "Planning to pursue a degree in Informatics Engineering.",
+      },
+    },
   },
   skillsSection: { title: "Technical Arsenal" },
   skillLabels: {
@@ -147,7 +171,7 @@ const portuguese = {
     dark: "Mudar para o modo escuro",
   },
   navigation: { home: "Início", about: "Sobre", skills: "Habilidades", projects: "Projetos", contact: "Contato" },
-  annotations: { about: "MÓDULO :: SOBRE", skills: "MÓDULO :: HABILIDADES", projects: "MÓDULO :: PROJETOS", contact: "CANAL :: CONTATO" },
+  annotations: { about: "MÓDULO :: SOBRE", education: "// formação e direção", skills: "MÓDULO :: HABILIDADES", projects: "MÓDULO :: PROJETOS", contact: "CANAL :: CONTATO" },
   hero: {
     availability: "Disponível para projetos de clientes e futuras oportunidades",
     lead: "Desenvolvedor Full-Stack",
@@ -166,6 +190,29 @@ const portuguese = {
       "Hoje, trabalho em projetos pagos para empresas, cuidando desde o desenvolvimento frontend e backend até bancos de dados, deploy e infraestrutura. A segurança faz parte desse trabalho desde o início, com autenticação, permissões, proteção de dados, HTTPS/TLS e cuidado com credenciais incorporados ao processo.",
       "Também acompanho seis alunos como mentor, ajudando-os a entender como um software é realmente construído, em vez de apenas copiar código. Continuo aprendendo todos os dias, mas agora faço isso enquanto crio sistemas que pessoas e empresas realmente utilizam.",
     ],
+  },
+  education: {
+    title: "Formação e próximo passo",
+    ageLocation: "{age} anos · {country}",
+    countries: { brazil: "Brasil" },
+    statuses: { planned: "Planejado" },
+    items: {
+      programming: {
+        label: "Estudos em Programação",
+        title: "Curso Profissional de Programação",
+        description: "Estudei programação durante o ensino secundário em Portugal.",
+      },
+      highSchool: {
+        label: "Ensino Médio",
+        title: "Conclusão da educação básica",
+        description: "Concluído no Brasil pelo EJA/ENCCEJA.",
+      },
+      universityGoal: {
+        label: "Objetivo universitário",
+        title: "Engenharia Informática",
+        description: "Pretendo cursar Engenharia Informática.",
+      },
+    },
   },
   skillsSection: { title: "Arsenal técnico" },
   skillLabels: {
@@ -239,7 +286,7 @@ const spanish = {
     dark: "Cambiar al modo oscuro",
   },
   navigation: { home: "Inicio", about: "Sobre mí", skills: "Habilidades", projects: "Proyectos", contact: "Contacto" },
-  annotations: { about: "MÓDULO :: SOBRE MÍ", skills: "MÓDULO :: HABILIDADES", projects: "MÓDULO :: PROYECTOS", contact: "CANAL :: CONTACTO" },
+  annotations: { about: "MÓDULO :: SOBRE MÍ", education: "// formación y dirección", skills: "MÓDULO :: HABILIDADES", projects: "MÓDULO :: PROYECTOS", contact: "CANAL :: CONTACTO" },
   hero: {
     availability: "Disponible para proyectos de clientes y futuras oportunidades",
     lead: "Desarrollador Full-Stack",
@@ -258,6 +305,29 @@ const spanish = {
       "Hoy trabajo en proyectos remunerados para empresas, encargándome del desarrollo frontend y backend, las bases de datos, el deploy y la infraestructura. La seguridad forma parte del trabajo desde el principio, con autenticación, permisos, protección de datos, HTTPS/TLS y un manejo cuidadoso de credenciales integrados en el proceso.",
       "También acompaño como mentor a seis estudiantes, ayudándolos a entender cómo se construye realmente el software en lugar de limitarse a copiar código. Sigo aprendiendo todos los días, pero ahora lo hago mientras creo sistemas que personas y empresas usan de verdad.",
     ],
+  },
+  education: {
+    title: "Formación y próximo paso",
+    ageLocation: "{age} años · {country}",
+    countries: { brazil: "Brasil" },
+    statuses: { planned: "Planificado" },
+    items: {
+      programming: {
+        label: "Estudios de Programación",
+        title: "Estudios profesionales de Programación",
+        description: "Estudié programación durante la educación secundaria en Portugal.",
+      },
+      highSchool: {
+        label: "Educación secundaria",
+        title: "Finalización de la educación básica",
+        description: "Concluida en Brasil mediante EJA/ENCCEJA.",
+      },
+      universityGoal: {
+        label: "Objetivo universitario",
+        title: "Ingeniería Informática",
+        description: "Planeo estudiar Ingeniería Informática.",
+      },
+    },
   },
   skillsSection: { title: "Arsenal técnico" },
   skillLabels: {

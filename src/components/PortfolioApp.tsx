@@ -7,6 +7,7 @@ import { FaLinkedin } from "react-icons/fa6";
 import { MdDarkMode, MdLightMode } from "react-icons/md";
 import { SiGithub, SiGmail, SiWhatsapp } from "react-icons/si";
 import { LanguageSelector } from "@/components/LanguageSelector";
+import { EducationSection } from "@/components/EducationSection";
 import { ProjectTestimonial } from "@/components/ProjectTestimonial";
 import { SkillGlyph } from "@/components/SkillGlyph";
 import { emailAddress, socialLinks, whatsappUrl } from "@/data/contact";
@@ -257,6 +258,7 @@ export function PortfolioApp() {
             <div className="about-copy">{text.about.paragraphs.map((paragraph) => <p key={paragraph}>{paragraph}</p>)}</div>
           </div>
         </section>
+        <EducationSection text={text} />
         <section id="skills" className="content-section page-container" aria-labelledby="skills-title">
           <div className="section-heading is-centered">
             <p className="technical-label">{text.annotations.skills}</p>
