@@ -88,7 +88,7 @@ const english = {
       highSchool: {
         label: "High School",
         title: "Secondary Education",
-        description: "Completed in Brazil through EJA/ENCCEJA.",
+        description: "Completed in Brazil.",
       },
       universityGoal: {
         label: "University Goal",
@@ -205,7 +205,7 @@ const portuguese = {
       highSchool: {
         label: "Ensino Médio",
         title: "Conclusão da educação básica",
-        description: "Concluído no Brasil pelo EJA/ENCCEJA.",
+        description: "Concluído no Brasil.",
       },
       universityGoal: {
         label: "Objetivo universitário",
@@ -320,7 +320,7 @@ const spanish = {
       highSchool: {
         label: "Educación secundaria",
         title: "Finalización de la educación básica",
-        description: "Concluida en Brasil mediante EJA/ENCCEJA.",
+        description: "Concluida en Brasil.",
       },
       universityGoal: {
         label: "Objetivo universitario",
