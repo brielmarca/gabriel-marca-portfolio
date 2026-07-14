@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState, useSyncExternalStore } from "react";
 import type { IconType } from "react-icons";
 import { FaGithub, FaLinkedinIn, FaWhatsapp } from "react-icons/fa";
 import { MdDarkMode, MdLanguage, MdLightMode } from "react-icons/md";
@@ -10,9 +10,24 @@ import { SkillGlyph } from "@/components/SkillGlyph";
 import { skillCategories } from "@/data/skills";
 
 const emailAddress = "brielmarcacontact@gmail.com";
+const themeStorageKey = "portfolio-theme";
 
 type Language = "en" | "pt";
 type Theme = "dark" | "light";
+
+function subscribeToTheme(onThemeChange: () => void) {
+  const observer = new MutationObserver(onThemeChange);
+  observer.observe(document.documentElement, { attributes: true, attributeFilter: ["data-theme"] });
+  return () => observer.disconnect();
+}
+
+function getThemeSnapshot(): Theme {
+  return document.documentElement.dataset.theme === "light" ? "light" : "dark";
+}
+
+function getServerThemeSnapshot(): Theme {
+  return "dark";
+}
 
 const navigationLinks = [
   { href: "#home", label: { en: "Home", pt: "Início" } },
@@ -32,8 +47,8 @@ const copy = {
     closeMenu: "Close navigation menu",
     switchLanguage: "Mudar para português",
     languageCode: "PT",
-    useLightTheme: "Use light theme",
-    useDarkTheme: "Use dark theme",
+    useLightTheme: "Switch to light mode",
+    useDarkTheme: "Switch to dark mode",
     heroAvailability: "Open to client projects and future opportunities",
     heroLead: "Full-Stack Developer",
     heroBuilding: "building",
@@ -209,7 +224,7 @@ function ContactAction({
 }) {
   const content = (
     <>
-      <span className="contact-action-icon is-platform" aria-hidden="true" style={{ color }}>
+      <span className="contact-action-icon is-platform" data-platform={label.toLowerCase()} aria-hidden="true" style={{ color }}>
         <Icon />
       </span>
       <span className="contact-action-copy">
@@ -239,7 +254,7 @@ function ContactAction({
 
 export function PortfolioApp() {
   const [language, setLanguage] = useState<Language>("en");
-  const [theme, setTheme] = useState<Theme>("dark");
+  const theme = useSyncExternalStore(subscribeToTheme, getThemeSnapshot, getServerThemeSnapshot);
   const [isOpen, setIsOpen] = useState(false);
   const [settingsReady, setSettingsReady] = useState(false);
   const menuButtonRef = useRef<HTMLButtonElement>(null);
@@ -247,37 +262,56 @@ export function PortfolioApp() {
   const whatsappUrl = process.env.NEXT_PUBLIC_WHATSAPP_URL;
 
   useEffect(() => {
-    const frame = window.requestAnimationFrame(() => {
-      const savedLanguage = window.localStorage.getItem("portfolio-language");
-      const savedTheme = window.localStorage.getItem("portfolio-theme");
+    let isCurrent = true;
+
+    queueMicrotask(() => {
+      if (!isCurrent) return;
+
+      let savedLanguage: string | null = null;
+
+      try {
+        savedLanguage = window.localStorage.getItem("portfolio-language");
+      } catch {}
+
       const nextLanguage: Language = savedLanguage === "pt" ? "pt" : "en";
-      const nextTheme: Theme = savedTheme === "light" || savedTheme === "dark"
-        ? savedTheme
-        : window.matchMedia("(prefers-color-scheme: light)").matches
-          ? "light"
-          : "dark";
 
       setLanguage(nextLanguage);
-      setTheme(nextTheme);
       document.documentElement.lang = nextLanguage === "pt" ? "pt-BR" : "en";
-      document.documentElement.dataset.theme = nextTheme;
       setSettingsReady(true);
     });
 
-    return () => window.cancelAnimationFrame(frame);
+    return () => {
+      isCurrent = false;
+    };
   }, []);
 
   useEffect(() => {
     if (!settingsReady) return;
     document.documentElement.lang = language === "pt" ? "pt-BR" : "en";
-    window.localStorage.setItem("portfolio-language", language);
+
+    try {
+      window.localStorage.setItem("portfolio-language", language);
+    } catch {}
   }, [language, settingsReady]);
 
   useEffect(() => {
-    if (!settingsReady) return;
-    document.documentElement.dataset.theme = theme;
-    window.localStorage.setItem("portfolio-theme", theme);
-  }, [theme, settingsReady]);
+    const mediaQuery = window.matchMedia("(prefers-color-scheme: light)");
+    const followSystemTheme = (event: MediaQueryListEvent) => {
+      let savedTheme: string | null = null;
+
+      try {
+        savedTheme = window.localStorage.getItem(themeStorageKey);
+      } catch {}
+
+      if (savedTheme === "dark" || savedTheme === "light") return;
+
+      const nextTheme: Theme = event.matches ? "light" : "dark";
+      document.documentElement.dataset.theme = nextTheme;
+    };
+
+    mediaQuery.addEventListener("change", followSystemTheme);
+    return () => mediaQuery.removeEventListener("change", followSystemTheme);
+  }, []);
 
   useEffect(() => {
     if (!isOpen) return;
@@ -298,6 +332,15 @@ export function PortfolioApp() {
     requestAnimationFrame(() => {
       document.querySelector<HTMLElement>(`${href} h1, ${href} h2`)?.focus({ preventScroll: true });
     });
+  };
+
+  const toggleTheme = () => {
+    const nextTheme: Theme = theme === "dark" ? "light" : "dark";
+    document.documentElement.dataset.theme = nextTheme;
+
+    try {
+      window.localStorage.setItem(themeStorageKey, nextTheme);
+    } catch {}
   };
 
   const projectData = [
@@ -358,7 +401,7 @@ export function PortfolioApp() {
               </HeaderControl>
               <HeaderControl
                 label={theme === "dark" ? text.useLightTheme : text.useDarkTheme}
-                onClick={() => setTheme((current) => current === "dark" ? "light" : "dark")}
+                onClick={toggleTheme}
               >
                 {theme === "dark" ? <MdLightMode aria-hidden="true" /> : <MdDarkMode aria-hidden="true" />}
               </HeaderControl>
@@ -474,7 +517,7 @@ export function PortfolioApp() {
                     {category.items.map((item) => {
                       return (
                         <li key={item.label.en}>
-                          <span className="skill-item-icon" aria-hidden="true" style={{ color: item.color }}><SkillGlyph icon={item.icon} /></span>
+                          <span className="skill-item-icon" data-icon={item.icon} aria-hidden="true" style={{ color: item.color }}><SkillGlyph icon={item.icon} /></span>
                           <span>{item.label[language]}</span>
                         </li>
                       );
