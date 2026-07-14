@@ -18,6 +18,8 @@ export interface Project {
   statuses: readonly string[];
   image: string;
   imageAlt: string;
+  imageWidth: number;
+  imageHeight: number;
 }
 
 export interface SocialLink {

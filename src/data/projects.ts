@@ -10,6 +10,8 @@ export const projects = [
     statuses: ["Live", "In Production", "Paid Client Project"],
     image: "/images/projects/4fourfight/hero.webp",
     imageAlt: "4Four Fight Academy website home page",
+    imageWidth: 1853,
+    imageHeight: 973,
   },
   {
     name: "Norad Capital",
@@ -20,5 +22,7 @@ export const projects = [
     statuses: ["In Development", "Public Preview", "Paid Client Project"],
     image: "/images/projects/norad-capital/hero.webp",
     imageAlt: "Norad Capital website home page",
+    imageWidth: 1859,
+    imageHeight: 971,
   },
 ] as const satisfies readonly Project[];

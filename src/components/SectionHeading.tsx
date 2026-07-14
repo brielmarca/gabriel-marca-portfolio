@@ -9,7 +9,7 @@ export function SectionHeading({ title, annotation, titleId, align = "left" }: S
   return (
     <div className={`section-heading ${align === "center" ? "is-centered" : ""}`}>
       <p className="technical-label">{annotation}</p>
-      <h2 id={titleId}>{title}</h2>
+      <h2 id={titleId} tabIndex={-1}>{title}</h2>
       <span className="heading-rule" aria-hidden="true" />
     </div>
   );

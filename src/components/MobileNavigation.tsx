@@ -21,6 +21,13 @@ export function MobileNavigation() {
     return () => document.removeEventListener("keydown", closeOnEscape);
   }, [isOpen]);
 
+  const closeAndFocusSection = (href: string) => {
+    setIsOpen(false);
+    requestAnimationFrame(() => {
+      document.querySelector<HTMLElement>(`${href} h1, ${href} h2`)?.focus({ preventScroll: true });
+    });
+  };
+
   return (
     <div className="md:hidden">
       <button
@@ -43,7 +50,7 @@ export function MobileNavigation() {
           <ul>
             {navigationLinks.map((link, index) => (
               <li key={link.href}>
-                <a href={link.href} onClick={() => setIsOpen(false)}>
+                <a href={link.href} onClick={() => closeAndFocusSection(link.href)}>
                   <span aria-hidden="true">0{index + 1}</span>
                   {link.label}
                 </a>

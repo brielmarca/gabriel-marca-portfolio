@@ -13,7 +13,7 @@ export default function Home() {
       <div className="ambient ambient-purple" aria-hidden="true" />
       <div className="ambient ambient-blue" aria-hidden="true" />
       <Header />
-      <main id="main-content">
+      <main id="main-content" tabIndex={-1}>
         <HeroSection />
         <AboutSection />
         <SkillsSection />

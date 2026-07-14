@@ -7,7 +7,7 @@ export function HeroSection() {
       <div className="hero-copy">
         <p className="technical-label">SYS_INIT :: PORTFOLIO_V1.0</p>
         <p className="availability"><span aria-hidden="true" />Open to client projects and future opportunities</p>
-        <h1 id="hero-title">
+        <h1 id="hero-title" tabIndex={-1}>
           <span className="hero-lead whitespace-nowrap">Full-Stack Developer</span>{" "}
           <span className="hero-building whitespace-nowrap">building <strong>secure</strong> and</span>{" "}
           <span className="hero-nowrap whitespace-nowrap">production-ready</span> systems.

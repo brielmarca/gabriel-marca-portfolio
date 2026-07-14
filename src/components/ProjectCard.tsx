@@ -15,8 +15,8 @@ export function ProjectCard({ project, index }: ProjectCardProps) {
         <Image
           src={project.image}
           alt={project.imageAlt}
-          width={1440}
-          height={900}
+          width={project.imageWidth}
+          height={project.imageHeight}
           quality={90}
           sizes="(max-width: 1099px) 100vw, 58vw"
           className="project-image"
@@ -26,9 +26,9 @@ export function ProjectCard({ project, index }: ProjectCardProps) {
         <p className="project-number">PROJECT_0{index + 1}</p>
         <p className="project-type">{project.type}</p>
         <h3><a href={project.url} target="_blank" rel="noopener noreferrer">{project.name}</a></h3>
-        <div className="status-list" aria-label="Project status">
-          {project.statuses.map((status) => <span key={status}>{status}</span>)}
-        </div>
+        <ul className="status-list" aria-label="Project status">
+          {project.statuses.map((status) => <li key={status}>{status}</li>)}
+        </ul>
         <p className="project-description">{project.description}</p>
         <ul className="technology-list" aria-label="Technologies used">
           {project.technologies.map((technology) => <li key={technology}>{technology}</li>)}
