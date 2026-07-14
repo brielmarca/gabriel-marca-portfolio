@@ -43,6 +43,12 @@ export type SkillIconId =
   | "supabase"
   | "sqlite"
   | "prisma"
+  | "dataModeling"
+  | "databaseIndexing"
+  | "queryOptimization"
+  | "transactions"
+  | "databaseMigrations"
+  | "backupStrategy"
   | "docker"
   | "dockerCompose"
   | "linux"
@@ -51,6 +57,11 @@ export type SkillIconId =
   | "cloudflare"
   | "cloudflarePages"
   | "productionDeployment"
+  | "logging"
+  | "errorTracking"
+  | "caching"
+  | "cdn"
+  | "authenticationAuthorization"
   | "jwt"
   | "springSecurity"
   | "roleBasedAccess"
@@ -78,6 +89,7 @@ export type SkillIconId =
 export interface SkillItem {
   icon: SkillIconId;
   color: `#${string}`;
+  group?: "technologies" | "engineeringConcepts";
 }
 
 export interface SkillCategory {

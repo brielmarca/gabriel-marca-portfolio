@@ -1,6 +1,6 @@
 import type { SkillCategory } from "@/types/portfolio";
 
-export const skillCategories = [
+export const skillCategories: readonly SkillCategory[] = [
   {
     code: "01",
     icon: "backend",
@@ -28,14 +28,20 @@ export const skillCategories = [
     code: "03",
     icon: "databases",
     items: [
-      { icon: "postgresql", color: "#4169E1" },
-      { icon: "mysql", color: "#4479A1" },
-      { icon: "mariadb", color: "#C0765A" },
-      { icon: "mongodb", color: "#47A248" },
-      { icon: "redis", color: "#DC382D" },
-      { icon: "supabase", color: "#3FCF8E" },
-      { icon: "sqlite", color: "#5DADE2" },
-      { icon: "prisma", color: "#AEBBD0" },
+      { icon: "postgresql", color: "#4169E1", group: "technologies" },
+      { icon: "mysql", color: "#4479A1", group: "technologies" },
+      { icon: "mariadb", color: "#C0765A", group: "technologies" },
+      { icon: "mongodb", color: "#47A248", group: "technologies" },
+      { icon: "redis", color: "#DC382D", group: "technologies" },
+      { icon: "supabase", color: "#3FCF8E", group: "technologies" },
+      { icon: "sqlite", color: "#5DADE2", group: "technologies" },
+      { icon: "prisma", color: "#AEBBD0", group: "technologies" },
+      { icon: "dataModeling", color: "#BB86FC", group: "engineeringConcepts" },
+      { icon: "databaseIndexing", color: "#74C7F8", group: "engineeringConcepts" },
+      { icon: "queryOptimization", color: "#F59E0B", group: "engineeringConcepts" },
+      { icon: "transactions", color: "#22C55E", group: "engineeringConcepts" },
+      { icon: "databaseMigrations", color: "#A78BFA", group: "engineeringConcepts" },
+      { icon: "backupStrategy", color: "#38BDF8", group: "engineeringConcepts" },
     ],
   },
   {
@@ -50,12 +56,17 @@ export const skillCategories = [
       { icon: "cloudflare", color: "#F38020" },
       { icon: "cloudflarePages", color: "#74C7F8" },
       { icon: "productionDeployment", color: "#BB86FC" },
+      { icon: "logging", color: "#AEBBD0" },
+      { icon: "errorTracking", color: "#F87171" },
+      { icon: "caching", color: "#F59E0B" },
+      { icon: "cdn", color: "#74C7F8" },
     ],
   },
   {
     code: "05",
     icon: "security",
     items: [
+      { icon: "authenticationAuthorization", color: "#BB86FC" },
       { icon: "jwt", color: "#D63AFF" },
       { icon: "springSecurity", color: "#6DB33F" },
       { icon: "roleBasedAccess", color: "#74C7F8" },
@@ -93,4 +104,4 @@ export const skillCategories = [
       { icon: "opencode", color: "#AEBBD0" },
     ],
   },
-] as const satisfies readonly SkillCategory[];
+];

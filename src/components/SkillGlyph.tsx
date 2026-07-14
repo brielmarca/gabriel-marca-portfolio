@@ -4,6 +4,7 @@ import {
   MdAccountTree,
   MdAdminPanelSettings,
   MdBuild,
+  MdCached,
   MdCode,
   MdDataObject,
   MdDevices,
@@ -54,7 +55,19 @@ import {
   SiVite,
   SiCplusplus,
 } from "react-icons/si";
-import { TbApi, TbBinaryTree, TbBrandCSharp } from "react-icons/tb";
+import {
+  TbApi,
+  TbArrowsExchange,
+  TbBinaryTree,
+  TbBrandCSharp,
+  TbBug,
+  TbCloudUpload,
+  TbDatabaseImport,
+  TbDatabaseSearch,
+  TbFileText,
+  TbKey,
+  TbWorld,
+} from "react-icons/tb";
 import { VscVscode } from "react-icons/vsc";
 import type { SkillIconId } from "@/types/portfolio";
 
@@ -85,6 +98,12 @@ const skillIconRegistry: Record<SkillIconId, IconType> = {
   supabase: SiSupabase,
   sqlite: SiSqlite,
   prisma: SiPrisma,
+  dataModeling: MdAccountTree,
+  databaseIndexing: TbDatabaseSearch,
+  queryOptimization: MdOutlineSpeed,
+  transactions: TbArrowsExchange,
+  databaseMigrations: TbDatabaseImport,
+  backupStrategy: TbCloudUpload,
   docker: SiDocker,
   dockerCompose: MdAccountTree,
   linux: SiLinux,
@@ -93,6 +112,11 @@ const skillIconRegistry: Record<SkillIconId, IconType> = {
   cloudflare: SiCloudflare,
   cloudflarePages: MdWeb,
   productionDeployment: MdRocketLaunch,
+  logging: TbFileText,
+  errorTracking: TbBug,
+  caching: MdCached,
+  cdn: TbWorld,
+  authenticationAuthorization: TbKey,
   jwt: SiJsonwebtokens,
   springSecurity: SiSpringsecurity,
   roleBasedAccess: MdAdminPanelSettings,

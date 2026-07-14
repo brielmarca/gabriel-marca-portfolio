@@ -134,6 +134,25 @@
   overflow-wrap: break-word;
 }
 
+.enhanced-skills-grid .enhanced-skill-card li.skill-group-start {
+  grid-template-rows: auto auto;
+}
+
+.skill-group-label {
+  grid-column: 1 / -1;
+  margin-bottom: 3px;
+  color: var(--text-subtle);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  line-height: 1.4;
+  text-transform: uppercase;
+}
+
+.enhanced-skill-card[data-category="databases"] li.skill-group-start[data-group="engineeringConcepts"] {
+  border-top-color: var(--border-strong);
+}
+
 .enhanced-skills-grid .enhanced-skill-card li::before {
   display: none;
 }
@@ -180,6 +199,11 @@
   .enhanced-skills-grid .enhanced-skill-card:nth-child(n + 5) {
     grid-column: span 4;
   }
+
+  .enhanced-skills-grid .enhanced-skill-card:is([data-category="databases"], [data-category="infrastructure"], [data-category="security"]) ul {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
 }
 
 /* Detailed project explanation */

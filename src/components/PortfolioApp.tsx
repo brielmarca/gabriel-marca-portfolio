@@ -267,19 +267,23 @@ export function PortfolioApp() {
           </div>
           <div className="skills-grid enhanced-skills-grid">
             {skillCategories.map((category) => (
-              <article className="skill-card enhanced-skill-card" key={category.code}>
+              <article className="skill-card enhanced-skill-card" data-category={category.icon} key={category.code}>
                 <div className="skill-card-header">
                   <span className="skill-icon" aria-hidden="true"><SkillGlyph icon={category.icon} /></span>
                   <h3>{text.skillLabels[category.icon]}</h3>
                   <span className="skill-index" aria-hidden="true">{category.code}</span>
                 </div>
                 <ul>
-                  {category.items.map((item) => (
-                    <li key={item.icon}>
-                      <span className="skill-item-icon" data-icon={item.icon} aria-hidden="true" style={{ color: item.color }}><SkillGlyph icon={item.icon} /></span>
-                      <span>{text.skillLabels[item.icon]}</span>
-                    </li>
-                  ))}
+                  {category.items.map((item, index) => {
+                    const startsGroup = item.group && item.group !== category.items[index - 1]?.group;
+                    return (
+                      <li className={startsGroup ? "skill-group-start" : undefined} data-group={item.group} key={item.icon}>
+                        {startsGroup && item.group ? <span className="skill-group-label">{text.skillsSection.groups[item.group]}</span> : null}
+                        <span className="skill-item-icon" data-icon={item.icon} aria-hidden="true" style={{ color: item.color }}><SkillGlyph icon={item.icon} /></span>
+                        <span>{text.skillLabels[item.icon]}</span>
+                      </li>
+                    );
+                  })}
                 </ul>
               </article>
             ))}
