@@ -104,10 +104,12 @@
 }
 
 @media (min-width: 1100px) {
+  .enhanced-skills-grid .enhanced-skill-card:nth-child(5),
   .enhanced-skills-grid .enhanced-skill-card.is-wide {
     grid-column: span 2;
   }
 
+  .enhanced-skills-grid .enhanced-skill-card:nth-child(5) ul,
   .enhanced-skills-grid .enhanced-skill-card.is-wide ul {
     grid-template-columns: repeat(3, minmax(0, 1fr));
   }
