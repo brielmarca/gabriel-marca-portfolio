@@ -13,12 +13,14 @@ export const metadata: Metadata = {
 };
 
 const themeInitializationScript = `(()=>{let saved=null;try{saved=localStorage.getItem("portfolio-theme")}catch{}let theme=saved==="dark"||saved==="light"?saved:"dark";if(saved!=="dark"&&saved!=="light")try{theme=matchMedia("(prefers-color-scheme: light)").matches?"light":"dark"}catch{}document.documentElement.dataset.theme=theme})();`;
+const languageInitializationScript = `(()=>{let saved=null;try{saved=localStorage.getItem("portfolio-language")}catch{}let language=saved==="en"||saved==="pt"||saved==="es"?saved:null;if(!language){let browser="";try{browser=navigator.languages?.[0]||navigator.language||""}catch{}language=browser.toLowerCase().startsWith("pt")?"pt":browser.toLowerCase().startsWith("es")?"es":"en"}document.documentElement.dataset.language=language;document.documentElement.lang=language==="pt"?"pt-BR":language})();`;
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html lang="en" data-theme="dark" suppressHydrationWarning className={`${geist.variable} ${montserrat.variable} ${jetBrainsMono.variable}`}>
+    <html lang="en" data-theme="dark" data-language="en" suppressHydrationWarning className={`${geist.variable} ${montserrat.variable} ${jetBrainsMono.variable}`}>
       <head>
         <script dangerouslySetInnerHTML={{ __html: themeInitializationScript }} />
+        <script dangerouslySetInnerHTML={{ __html: languageInitializationScript }} />
       </head>
       <body>{children}</body>
     </html>

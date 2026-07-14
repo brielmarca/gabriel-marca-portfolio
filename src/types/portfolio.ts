@@ -1,12 +1,9 @@
+export type Locale = "en" | "pt" | "es";
+
 export interface NavigationLink {
-  label: string;
+  id: "home" | "about" | "skills" | "projects" | "contact";
   href: `#${string}`;
 }
-
-export type LocalizedSkillText = {
-  en: string;
-  pt: string;
-};
 
 export type SkillIconId =
   | "backend"
@@ -68,27 +65,23 @@ export type SkillIconId =
   | "opencode";
 
 export interface SkillItem {
-  label: LocalizedSkillText;
   icon: SkillIconId;
   color: `#${string}`;
 }
 
 export interface SkillCategory {
-  name: LocalizedSkillText;
   code: `0${number}`;
   icon: SkillIconId;
   items: readonly SkillItem[];
 }
 
 export interface Project {
+  id: "fourFight" | "norad";
   name: string;
-  type: string;
   url: string;
-  description: string;
   technologies: readonly string[];
-  statuses: readonly string[];
+  statuses: readonly ("live" | "production" | "paid" | "development" | "preview")[];
   image: string;
-  imageAlt: string;
   imageWidth: number;
   imageHeight: number;
 }
