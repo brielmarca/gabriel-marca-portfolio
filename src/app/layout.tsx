@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Geist, JetBrains_Mono, Montserrat } from "next/font/google";
 import "./globals.css";
+import "./enhancements.css";
 
 const geist = Geist({ subsets: ["latin"], variable: "--font-geist", display: "swap" });
 const montserrat = Montserrat({ subsets: ["latin"], variable: "--font-montserrat", display: "swap" });
@@ -13,7 +14,7 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html lang="en" className={`${geist.variable} ${montserrat.variable} ${jetBrainsMono.variable}`}>
+    <html lang="en" data-theme="dark" className={`${geist.variable} ${montserrat.variable} ${jetBrainsMono.variable}`}>
       <body>{children}</body>
     </html>
   );
