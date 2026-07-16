@@ -1,115 +1,64 @@
-# Gabriel Marca Portfolio
+# Gabriel Marca — Developer Portfolio
 
-[![Live Site](https://img.shields.io/badge/Live%20Site-Cloudflare%20Pages-F38020?style=for-the-badge&logo=cloudflare&logoColor=white)](https://brielmarca-portfolio.pages.dev)
-[![Next.js](https://img.shields.io/badge/Next.js-16-black?style=for-the-badge&logo=next.js)](https://nextjs.org/)
-[![React](https://img.shields.io/badge/React-19-61DAFB?style=for-the-badge&logo=react&logoColor=black)](https://react.dev/)
-[![TypeScript](https://img.shields.io/badge/TypeScript-5-3178C6?style=for-the-badge&logo=typescript&logoColor=white)](https://www.typescriptlang.org/)
+Multilingual portfolio presenting my work as a full-stack developer, with emphasis on Java, Spring Boot, React and software delivered to production.
 
-Personal portfolio of **Gabriel Marca**, a Full-Stack Developer focused on building secure, responsive and production-ready systems.
-
-## Live Website
-
-**[brielmarca-portfolio.pages.dev](https://brielmarca-portfolio.pages.dev)**
-
-Every push to `main` automatically triggers a production deployment through Cloudflare Pages.
+**Live:** [brielmarca-portfolio.pages.dev](https://brielmarca-portfolio.pages.dev/)
 
 ## Highlights
 
-- Dark and Light Mode with saved user preference
-- Complete localization in English, Brazilian Portuguese and Spanish
-- Responsive layout validated from mobile to large desktop screens
-- Accessible keyboard navigation and reduced-motion support
-- Real paid client projects
-- Technology stack with categorized icons
-- Production engineering and database knowledge
-- Direct contact through Email, WhatsApp, LinkedIn and GitHub
-- Static Next.js export deployed automatically on Cloudflare Pages
+- English, Portuguese and Spanish content
+- Responsive layout and dark/light themes
+- Accessible navigation and semantic page structure
+- Project case studies with live links
+- Static output suited to global edge deployment
+- Metadata and content structured for discoverability
 
-## Technology Stack
+## Technology
 
-- **Framework:** Next.js App Router
-- **Interface:** React, TypeScript and Tailwind CSS
-- **Icons:** React Icons
-- **Deployment:** Cloudflare Pages
-- **Architecture:** Static export
+- Next.js 16
+- React 19
+- TypeScript
+- Tailwind CSS 4
+- Cloudflare Pages
 
-## Featured Projects
+## Local development
 
-### 4Four Fight Academy
+Requirements: Node.js 20+ and npm.
 
-A Full-Stack platform developed for a martial arts academy, including authentication, protected areas, administration tools, student management, database management, VPS infrastructure, HTTPS/TLS and production deployment.
+    npm install
+    npm run dev
 
-**Live:** [4fourfight.com](https://4fourfight.com/)
+Open [localhost:3000](http://localhost:3000).
 
-### Norad Capital
+## Production build
 
-A premium institutional website for a finance company focused on real estate credit and Home Equity, with a responsive frontend and a professional visual system built around trust and clarity.
+    npm run build
 
-**Preview:** [projeto-norad-capital-site.pages.dev](https://projeto-norad-capital-site.pages.dev/)
+The project uses a static export for Cloudflare Pages. Validate navigation, language switching and theme behavior in the generated build before deployment.
 
-## Main Sections
+## Project structure
 
-- Introduction
-- About
-- Education and next step
-- Technical skills
-- Featured projects
-- Contact
+    app/          routes, layouts and localized pages
+    components/   reusable interface components
+    public/       static assets
+    styles/       global styling and theme foundations
 
-## Local Development
+## Quality checklist
 
-Requirements:
+Before publishing a change:
 
-- Node.js 20 or later
-- npm
+- Run the configured lint and build commands
+- Check all three languages
+- Test keyboard navigation and visible focus states
+- Review mobile and desktop layouts
+- Verify external project and contact links
 
-Install dependencies and start the development server:
+## Featured work
 
-```bash
-npm install
-npm run dev
-```
-
-Open `http://localhost:3000` in a browser.
-
-## Validation
-
-```bash
-npm run lint
-npm run type-check
-npm run build
-```
-
-The production build generates a static export in `out/`.
-
-## Environment Variables
-
-Create an ignored `.env.local` file when configuring the WhatsApp contact destination locally:
-
-```env
-NEXT_PUBLIC_WHATSAPP_URL=https://wa.me/message/GLN4TWI6DY3HH1
-```
-
-Do not commit `.env.local`, credentials or deployment tokens.
-
-## Project Structure
-
-```text
-public/images/     Optimized portfolio images
-src/app/           Next.js entry points and global styles
-src/components/    Reusable sections and interface components
-src/data/          Structured project, skill and contact data
-src/i18n/          Typed multilingual messages and locale state
-src/types/         Shared TypeScript types
-```
+The portfolio currently highlights the [4Four Fight platform](https://4fourfight.com/) and the [Norad Capital website](https://norad-capital-site.pages.dev/), alongside other software and learning projects.
 
 ## Contact
 
-- **Portfolio:** [brielmarca-portfolio.pages.dev](https://brielmarca-portfolio.pages.dev)
-- **GitHub:** [github.com/brielmarca](https://github.com/brielmarca)
-- **LinkedIn:** [linkedin.com/in/gabrielmarca](https://www.linkedin.com/in/gabrielmarca)
-- **Email:** [brielmarcacontact@gmail.com](mailto:brielmarcacontact@gmail.com)
-
----
-
-Built and designed by Gabriel Marca.
+- [LinkedIn](https://www.linkedin.com/in/gabrielmarca/)
+- [GitHub](https://github.com/brielmarca)
+- [Email](mailto:brielmarcacontact@gmail.com)
